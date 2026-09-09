@@ -9,8 +9,8 @@ have to get security judgment *right*, not just look plausible.
 
 ### What I'm building right now
 
-Four agents, each pointed at a real problem instead of a benchmark. Two of them are things you can
-install and use today:
+Five agents, each pointed at a real problem instead of a benchmark. Three of them are things you can
+use today, and one of those needs no install at all:
 
 **[diff-sentry](https://github.com/qazbnm456/diff-sentry) — catch a malicious pull request before you
 merge it.** A GitHub Action that reads a change the way an attacker hopes you won't: `pull_request_target`
@@ -34,6 +34,23 @@ uv tool install "ctx-distillery[cli]"
 npx skills add qazbnm456/ctx-distillery
 ```
 
+**[rlm-notebook](https://github.com/qazbnm456/rlm-notebook) — a research notebook where you can check
+the answer.** Paste in sources of any kind (text, web pages, PDFs including scanned ones, YouTube
+captions), ask a question, and every claim comes back with a coordinate into the original you can open
+and read. A Trajectory drawer sits over the run behind each answer: every planner turn in the model's
+own words, a tool timeline scaled to real elapsed time, and what the pre-submit validator rejected
+before letting it through. The limit is in the UI, not just the README: a verified citation proves the
+coordinate exists, never that the sentence around it is faithful, which is why you get to click through.
+
+```bash
+uv tool install "rlm-notebook[api] @ git+https://github.com/qazbnm456/rlm-notebook"
+rlm-notebook serve   # the HTTP API and the browser workspace, on 127.0.0.1 by default
+```
+
+Or skip the install: [**a live demo**](https://www.boik.tw/rlm-notebook/) with six real notebooks, three
+in English and three in Traditional Chinese from the same sources, replaying the reasoning traces those
+runs actually produced.
+
 Two more are research agents rather than products, and honest about it:
 
 | Project | What it does |
@@ -41,7 +58,7 @@ Two more are research agents rather than products, and honest about it:
 | **[cve-reverser](https://github.com/qazbnm456/cve-reverser)** | Reverses a *publicly disclosed* WordPress CVE from its patch into a local-lab PoC and a Nuclei detection template. Strict planner/lifeline/generator role separation, so no single model both reasons about the bug and writes the final template unchecked. |
 | **[toolscout](https://github.com/qazbnm456/toolscout)** | Implements Microsoft's ATLAS method: a small planner solves tasks over a huge MCP toolspace by discovering it progressively (list → load → describe → call) instead of holding hundreds of tool schemas in context. |
 
-All four sit on **[rlm-harness](https://github.com/qazbnm456/rlm-harness)** — a reusable harness over
+All five sit on **[rlm-harness](https://github.com/qazbnm456/rlm-harness)** — a reusable harness over
 [DSPy](https://dspy.ai)'s Recursive Language Model module. Every task gets a full, replayable JSONL trace
 (main steps, sub-model calls, tool calls), execution is sandboxed by default (pyodide/Deno; raw local
 execution is refused unless you opt in), and those traces export as reward-free SFT/RL datasets. It is
