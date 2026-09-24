@@ -34,22 +34,12 @@ uv tool install "ctx-distillery[cli]"
 npx skills add qazbnm456/ctx-distillery
 ```
 
-**[rlm-notebook](https://github.com/qazbnm456/rlm-notebook) — a research notebook where you can check
-the answer.** Paste in sources of any kind (text, web pages, PDFs including scanned ones, YouTube
-captions), ask a question, and every claim comes back with a coordinate into the original you can open
-and read. A Trajectory drawer sits over the run behind each answer: every planner turn in the model's
-own words, a tool timeline scaled to real elapsed time, and what the pre-submit validator rejected
-before letting it through. The limit is in the UI, not just the README: a verified citation proves the
-coordinate exists, never that the sentence around it is faithful, which is why you get to click through.
+**[Penumbra](https://github.com/qazbnm456/penumbra): a personal knowledge hub where you can check the answer.** Throw anything at it (links, text, PDFs including scanned ones, YouTube captions) and it lands in the Horizon, one stream you never have to tidy. Gather what belongs together into an Orbit, ask a question, and every claim comes back with a coordinate into the original you can open and read. A Trajectory drawer sits over the run behind each answer: every planner turn in the model's own words, a tool timeline scaled to real elapsed time, and what the pre-submit validator rejected before letting it through. The limit is in the UI, not just the README: a verified citation proves the coordinate exists, never that the sentence around it is faithful, which is why you get to click through. It runs entirely on your own machine as a desktop app, macOS first; the app builds from `desktop/` in the repository.
 
 ```bash
-uv tool install "rlm-notebook[api] @ git+https://github.com/qazbnm456/rlm-notebook"
-rlm-notebook serve   # the HTTP API and the browser workspace, on 127.0.0.1 by default
+uv tool install "penumbra[api] @ git+https://github.com/qazbnm456/penumbra"
+penumbra serve   # the local server the desktop app runs, on 127.0.0.1
 ```
-
-Or skip the install: [**a live demo**](https://www.boik.tw/rlm-notebook/) with six real notebooks, three
-in English and three in Traditional Chinese from the same sources, replaying the reasoning traces those
-runs actually produced.
 
 Two more are research agents rather than products, and honest about it:
 
